@@ -1,0 +1,22 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="moveit2_commander",
+    version="0.1.0",
+    author="SoYu",
+    author_email="dg.min0246@gmail.com",
+    description="Python wrapper for MoveIt2 service interfaces",
+    long_description=open("README.rst").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/7cmdehdrb/moveit2_commander",
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    install_requires=[
+        "numpy>=1.24.1",
+    ],
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+    ],
+    python_requires=">=3.10",
+)
