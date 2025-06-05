@@ -14,3 +14,7 @@ History
 * Add property in order to get lasted updated field for each class.
 * Add documentation for PyPI.
 
+0.1.2 (2025-06-05)
+------------------
+
+* Fix README.rst to include the correct package name.
