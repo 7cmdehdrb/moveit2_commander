@@ -6,3 +6,11 @@ History
 ------------------
 
 * First release on PyPI.
+
+0.1.1 (2025-06-05)
+------------------
+
+* Add ros logger to the package in order to check the status of the classes.
+* Add property in order to get lasted updated field for each class.
+* Add documentation for PyPI.
+

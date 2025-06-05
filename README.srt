@@ -6,13 +6,9 @@ moveit2_commander
 .. image:: https://img.shields.io/pypi/v/moveit2_commander.svg
         :target: https://pypi.python.org/pypi/moveit2_commander
 
-.. image:: https://img.shields.io/travis/SoYu/moveit2_commander.svg
-        :target: https://travis-ci.com/SoYu/moveit2_commander
-
 .. image:: https://readthedocs.org/projects/moveit2-commander/badge/?version=latest
-        :target: https://moveit2-commander.readthedocs.io/en/latest/?version=latest
+        :target: https://github.com/7cmdehdrb/moveit2_commander/blob/master/DOCUMENT.md
         :alt: Documentation Status
-
 
 
 
@@ -20,13 +16,8 @@ package for controlling moveit2 services
 
 
 * Free software: MIT license
-* Documentation: https://moveit2-commander.readthedocs.io.
+* Documentation: https://github.com/7cmdehdrb/moveit2_commander/blob/master/DOCUMENT.md
 
-
-Features
---------
-
-* TODO
 
 Credits
 -------
