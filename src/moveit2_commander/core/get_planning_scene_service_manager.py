@@ -22,6 +22,19 @@ class GetPlanningScene_ServiceManager(ServiceManager):
             **kwargs,
         )
 
+        self._scene: PlanningScene = None
+
+    @property
+    def scene(self) -> PlanningScene:
+        """
+        Property to get the last retrieved planning scene.
+
+        Returns:
+        - PlanningScene: The current planning scene, which includes information about the robot's state,
+          the environment, and any obstacles.
+        """
+        return self._scene
+
     def run(self) -> PlanningScene:
         """
         Method to retrieve the current planning scene from the MoveIt2 system.
@@ -34,9 +47,9 @@ class GetPlanningScene_ServiceManager(ServiceManager):
         request = GetPlanningScene.Request()
         response: GetPlanningScene.Response = self._send_request(request)
 
-        scene = self._handle_response(response)
+        self._scene = self._handle_response(response)
 
-        return scene
+        return self._scene
 
     def _handle_response(self, response: GetPlanningScene.Response) -> PlanningScene:
         scene: PlanningScene = response.scene

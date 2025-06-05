@@ -31,6 +31,18 @@ class KinematicPath_ServiceManager(ServiceManager):
 
         self._planning_group = planning_group
 
+        self._trajectory: RobotTrajectory = None
+
+    @property
+    def trajectory(self) -> RobotTrajectory:
+        """
+        Property to get the last computed kinematic path.
+
+        Returns:
+        - RobotTrajectory: The computed kinematic path as a RobotTrajectory instance.
+        """
+        return self._trajectory
+
     def run(
         self,
         goal_constraints: List[Constraints],
@@ -49,7 +61,7 @@ class KinematicPath_ServiceManager(ServiceManager):
         - path_constraints (Constraints): Constraints that define the path constraints for the kinematic path. None is allowed.
         - joint_states (JointState): The current joint states of the robot. This variable must be provided.
 
-        - Planning Parameters:
+        Planning Parameters:
             - num_planning_attempts (int): The number of planning attempts to make. Defaults to 100.
             - allowed_planning_time (float): The maximum time allowed for planning in seconds. Defaults to 1.0.
             - max_velocity_scaling_factor (float): The maximum velocity scaling factor for the planning. Defaults to 1.0.
@@ -96,9 +108,9 @@ class KinematicPath_ServiceManager(ServiceManager):
             request.motion_plan_request.path_constraints = path_constraints
 
         response: GetMotionPlan.Response = self._send_request(request)
-        trajectory: RobotTrajectory = self._handle_response(response)
+        self._trajectory: RobotTrajectory = self._handle_response(response)
 
-        return trajectory
+        return self._trajectory
 
     def _handle_response(
         self,

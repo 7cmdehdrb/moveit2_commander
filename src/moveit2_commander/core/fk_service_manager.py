@@ -19,6 +19,18 @@ class FK_ServiceManager(ServiceManager):
             **kwargs,
         )
 
+        self._fk_pose: PoseStamped = None
+
+    @property
+    def fk_pose(self) -> PoseStamped:
+        """
+        Property to get the last computed FK pose.
+
+        Returns:
+        - PoseStamped: The pose of the end effector in the base_link frame.
+        """
+        return self._fk_pose
+
     def run(
         self, joint_states: JointState, end_effector: str = "wrist_3_link"
     ) -> PoseStamped:
@@ -52,6 +64,8 @@ class FK_ServiceManager(ServiceManager):
 
         response: GetPositionFK.Response = self._send_request(request)
         result = self._handle_response(response)
+
+        self._fk_pose = result
 
         return result
 

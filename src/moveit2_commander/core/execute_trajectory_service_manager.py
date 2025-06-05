@@ -55,6 +55,13 @@ class ExecuteTrajectory_ServiceManager(Manager):
     ) -> RobotTrajectory:
         """
         Method to scale the duration and velocities of a trajectory by a given factor.
+
+        Parameters:
+        - trajectory (RobotTrajectory): The trajectory to be scaled.
+        - scale_factor (float): The factor by which to scale the trajectory's duration and velocities.
+
+        Returns:
+        - RobotTrajectory: A new RobotTrajectory instance with scaled durations and velocities.
         """
 
         def scale_duration(duration: BuiltinDuration, factor: float) -> BuiltinDuration:

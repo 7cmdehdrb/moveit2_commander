@@ -56,12 +56,20 @@ class ServiceManager(object):
         # <<< Service Parameters <<<
 
         # >>> Service Client >>>
+        self._node.get_logger().info(
+            f"Creating service client for {service_name} of type {service_type.__name__}"
+        )
+
         self._srv = self._node.create_client(service_type, service_name)
 
         while not self._srv.wait_for_service(timeout_sec=1.0):
             self._node.get_logger().info(
                 f"Service {service_name} not available, waiting again..."
             )
+
+        self._node.get_logger().info(
+            f"Service {service_name} is available, proceeding with service calls."
+        )
         # <<< Service Client <<<
 
     def _get_error_code(self, code: int):

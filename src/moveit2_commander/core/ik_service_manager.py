@@ -19,6 +19,18 @@ class IK_ServiceManager(ServiceManager):
             **kwargs,
         )
 
+        self._ik_solution: RobotState = None
+
+    @property
+    def ik_solution(self) -> RobotState:
+        """
+        Property to get the last computed IK solution.
+
+        Returns:
+        - RobotState: The joint states that achieve the desired pose of the end effector.
+        """
+        return self._ik_solution
+
     def run(
         self,
         pose_stamped: PoseStamped,
@@ -64,9 +76,9 @@ class IK_ServiceManager(ServiceManager):
         )
 
         response: GetPositionIK.Response = self._send_request(request)
-        result = self._handle_response(response)
+        self._ik_solution = self._handle_response(response)
 
-        return result
+        return self._ik_solution
 
     def _handle_response(self, response: GetPositionIK.Response) -> RobotState:
         """

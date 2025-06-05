@@ -41,16 +41,11 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 This package depends on ROS2 packages and message types:
 
+- ROS2:
+        -humble
+
 - ROS2 Core Libraries:
         - rclpy
-        - rclpy.action.ActionClient
-        - rclpy.action.client.ClientGoalHandle
-        - rclpy.duration.Duration
-        - rclpy.node.Node
-        - rclpy.qos.QoSProfile
-        - rclpy.qos.qos_profile_system_default
-        - rclpy.task.Future
-        - rclpy.time.Time
 
 - ROS2 Message Types:
         - builtin_interfaces.msg.Duration

@@ -32,6 +32,18 @@ class CartesianPath_ServiceManager(ServiceManager):
         self._planning_group = planning_group
         self._fraction_threshold = fraction_threshold
 
+        self._trajectory: RobotTrajectory = None
+
+    @property
+    def trajectory(self) -> RobotTrajectory:
+        """
+        Property to get the last computed Cartesian path.
+
+        Returns:
+        - RobotTrajectory: The computed Cartesian path as a RobotTrajectory instance.
+        """
+        return self._trajectory
+
     def run(
         self,
         header: Header,
@@ -79,9 +91,9 @@ class CartesianPath_ServiceManager(ServiceManager):
         )
 
         response: GetCartesianPath.Response = self._send_request(request)
-        result = self._handle_response(response)
+        self._trajectory = self._handle_response(response)
 
-        return result
+        return self._trajectory
 
     def _handle_response(
         self,
